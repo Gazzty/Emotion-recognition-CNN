@@ -7,7 +7,7 @@ from tensorflow.keras.preprocessing.image import img_to_array
 model = load_model('modelo_emociones.keras')
 
 # Diccionario para traducir la salida del modelo a emociones
-emotion_labels = {0: 'Triste', 1: 'Feliz', 2: 'Neutral'}
+emotion_labels = ['enojado', 'disgustado', 'asustado', 'feliz', 'neutral', 'triste', 'sorprendido']
 
 # Inicializar la captura de video
 cap = cv2.VideoCapture(0)
@@ -28,7 +28,7 @@ while True:
     for (x, y, w, h) in faces:
         # Extraer la cara detectada y procesarla
         face = frame[y:y+h, x:x+w]
-        face = cv2.resize(face, (32, 32))  # Redimensionar al tamaño de entrada del modelo
+        face = cv2.resize(face, (32, 32))  # Redimensionar al tamaño de entrada del modelo (32, 32)
         face = face.astype('float32') / 255  # Normalizar al rango [0, 1]
         face = img_to_array(face)
         face = np.expand_dims(face, axis=0)
