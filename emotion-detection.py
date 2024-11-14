@@ -4,10 +4,10 @@ from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.image import img_to_array
 
 # Cargar el modelo preentrenado
-model = load_model('modelo_emociones_superreducido.h5')
+model = load_model('modelo_emociones.keras')
 
 # Diccionario para traducir la salida del modelo a emociones
-emotion_labels = {0: 'Sad', 1: 'Happy', 2: 'Neutral'}
+emotion_labels = {0: 'Triste', 1: 'Feliz', 2: 'Neutral'}
 
 # Inicializar la captura de video
 cap = cv2.VideoCapture(0)
