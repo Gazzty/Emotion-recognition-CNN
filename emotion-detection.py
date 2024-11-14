@@ -28,7 +28,7 @@ while True:
     for (x, y, w, h) in faces:
         # Extraer la cara detectada y procesarla
         face = frame[y:y+h, x:x+w]
-        face = cv2.resize(face, (32, 32))  # Redimensionar al tamaño de entrada del modelo (32, 32)
+        face = cv2.resize(face, (48, 48))  # Aseguramos que las imágenes sean de tamaño (48, 48)
         face = face.astype('float32') / 255  # Normalizar al rango [0, 1]
         face = img_to_array(face)
         face = np.expand_dims(face, axis=0)
