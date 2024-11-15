@@ -1,4 +1,4 @@
-#Detección de emociones en tiempo real con Redes Neuronales Convolucionales
+# Detección de emociones en tiempo real con Redes Neuronales Convolucionales
 
 El dataset que fué usado para entrenar el modelo es https://www.kaggle.com/datasets/ananthu017/emotion-detection-fer/data
 
