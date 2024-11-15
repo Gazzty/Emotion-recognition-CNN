@@ -1,7 +1,7 @@
 import tensorflow as tf
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense, Dropout, BatchNormalization
-from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.callbacks import EarlyStopping, ReduceLROnPlateau
 from tensorflow.keras.optimizers import AdamW
 import time
@@ -57,7 +57,7 @@ validation_generator = data_gen_val.flow_from_directory(
     class_mode='categorical'
 )
 
-# Crear el modelo
+# Definir el modelo
 model = crear_modelo()
 
 # Callbacks para mejorar el entrenamiento
@@ -66,16 +66,12 @@ reduce_lr = ReduceLROnPlateau(monitor='val_loss', factor=0.2, patience=3, min_lr
 
 # Entrenar el modelo con data augmentation y callbacks
 start_time = time.time()
-
-# Usar model.fit para entrenamiento más eficiente con barras de progreso
 history = model.fit(
     train_generator,
-    epochs=500,
+    epochs=100,
     validation_data=validation_generator,
-    callbacks=[early_stopping, reduce_lr],
-    verbose=1  # Agregar verbose para que el progreso sea más detallado
+    callbacks=[early_stopping, reduce_lr]
 )
-
 elapsed_time = time.time() - start_time
 print(f"Training time: {elapsed_time:.2f} seconds")
 
